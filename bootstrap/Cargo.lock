@@ -243,9 +243,9 @@ dependencies = [
 
 [[package]]
 name = "ryu"
-version = "1.0.6"
+version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3c9613b5a66ab9ba26415184cfc41156594925a9cf3a2057e57f31ff145f6568"
+checksum = "254df5081ce98661a883445175e52efe99d1cb2a5552891d965d2f5d0cad1c16"
 
 [[package]]
 name = "serde"
@@ -410,7 +410,7 @@ dependencies = [
 [[package]]
 name = "yzix-core"
 version = "0.1.0"
-source = "git+https://github.com/YZITE/yzix.git?branch=main#e1bd76c6e579555f081a2ae0f0cc20c1b8b1e2c0"
+source = "git+https://github.com/YZITE/yzix.git?branch=main#e33fe9e6d1d2f8a2e23e7d988bf5985d4ed9244e"
 dependencies = [
  "camino",
  "ciborium",
@@ -424,7 +424,7 @@ dependencies = [
 [[package]]
 name = "yzix-store"
 version = "0.1.0"
-source = "git+https://github.com/YZITE/yzix.git?branch=main#e1bd76c6e579555f081a2ae0f0cc20c1b8b1e2c0"
+source = "git+https://github.com/YZITE/yzix.git?branch=main#e33fe9e6d1d2f8a2e23e7d988bf5985d4ed9244e"
 dependencies = [
  "base64",
  "blake2",

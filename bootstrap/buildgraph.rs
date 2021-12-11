@@ -148,10 +148,11 @@ fn main() {
     node_!(
         binutils_pass1,
         NodeKind::Run {
-            command: pattern![I "/bin/bash"; P "binutils_pass1.sh"; P "binutils"; P "patch1"],
+            command: pattern![I "/bin/sh"; P "binutils_pass1.sh"; P "binutils"; P "patch1"],
             envs: Default::default(),
             outputs: Default::default(),
         },
+        (gentoo_root, root),
         (binutils_unpack, "binutils"),
         (binutils_pass1_sh, "binutils_pass1.sh"),
         ("binutils-2.37-upstream_fix-1.patch", "patch1"),
