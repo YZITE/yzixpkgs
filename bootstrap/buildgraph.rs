@@ -23,6 +23,17 @@ fn main() {
         (@@ $ph:literal) => {{ EdgeKind::Placeholder($ph.to_string()) }};
         (@ node $src:ident) => {{ stringify!($src) }};
         (@ node $src:literal) => {{ $src }};
+        ($name:ident, $kind:expr) => {{
+            names.insert(
+                stringify!($name).to_string(),
+                g.0.add_node(Node {
+                    name: stringify!($name).to_string(),
+                    kind: $kind,
+                    logtag: next_logtag(),
+                    rest: (),
+                }),
+            );
+        }};
         ($name:ident, $kind:expr, $(( $src:tt, $($x:tt)* )),* $(,)?) => {{
             let curdst = g.0.add_node(Node {
                 name: stringify!($name).to_string(),
@@ -50,7 +61,7 @@ fn main() {
             hash: "m84OFxOfkVnnF7om15va9o1mgFcWD1TGH26ZhTLPuyg"
                 .parse()
                 .unwrap(),
-        }
+        },
     );
     node_!(
         alpine_root,
@@ -73,7 +84,7 @@ fn main() {
             command: pattern![I "/bin/busybox"; I "sh"; P "utxzsh"; P "archive"],
             envs: Default::default(),
             outputs: Default::default(),
-        }
+        },
         (alpine_root, root),
         (unpack_txz, "utxzsh"),
         (gentoo_dl, "archive"),
@@ -148,13 +159,14 @@ fn main() {
 
     let (nodes, edges) = (g.0.node_count(), g.0.edge_count());
     let mut gsane = Graph::<()>::default();
-    let trt = gsane.take_and_merge(g, |&()| (), |&mut ()| ());
+    let _trt = gsane.take_and_merge(g, |&()| (), |&mut ()| ());
     if gsane.0.node_count() != nodes || gsane.0.edge_count() != edges {
         eprintln!("verification failed!");
+        std::process::exit(1);
     }
 
     println!(
         "{}",
-        serde_json::to_string(&g).expect("serialization failed")
+        serde_json::to_string(&gsane).expect("serialization failed")
     );
 }

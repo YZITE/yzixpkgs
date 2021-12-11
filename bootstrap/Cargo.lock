@@ -32,7 +32,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "buildgraph"
+name = "bootstrap"
 version = "0.0.0"
 dependencies = [
  "serde",
