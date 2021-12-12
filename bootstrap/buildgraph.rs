@@ -133,16 +133,22 @@ fn main() {
     }
 
     // bootstrapping
+    //  applicable binutils patches from NixOS/nixpkgs/pkgs/development/tools/misc/binutils
+    node_!(binutils_deterministic, dlocal("binutils/deterministic.patch"));
+    node_!(binutils_always_search_rpath, dlocal("binutils/always-search-rpath.patch"));
     node_!(
         binutils_unpack,
         NodeKind::Run {
-            command: pattern![I "/bin/busybox"; I "sh"; P "utxzsh"; P "archive"],
+            command: pattern![I "/bin/sh"; P "utxzsh"; P "archive"; P "deterministic"; P "always-search-rpath"],
             envs: Default::default(),
             outputs: Default::default(),
         },
-        (alpine_root, root),
+        // `alpine` has no `patch` :-(
+        (gentoo_root, root),
         (unpack_txz, "utxzsh"),
         ("binutils-2.37.tar.xz", "archive"),
+        (binutils_deterministic, "deterministic"),
+        (binutils_always_search_rpath, "always-search-rpath"),
     );
     node_!(binutils_pass1_sh, dlocal("binutils/pass1.sh"));
     node_!(

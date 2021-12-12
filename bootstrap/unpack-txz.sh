@@ -1,22 +1,19 @@
 set -e
-xzcat "$1" > tmp.tar
 mkdir out
-cd /out
-tar xf ../tmp.tar
+tar x -o -J -f "$1" -C /out
 
 # yes, this is a hack.
-if [ -d "$(echo *)" ]; then
-  fld="$(echo *)"
+if [ -d "$(echo /out/*)" ]; then
+  fld="$(echo /out/*)"
   mkdir /newout
   mv -t/newout "$fld"/*
   rmdir "$fld"
-  cd /
   rmdir /out
   mv -T /newout /out
-  cd /out
 fi
 
 shift
+cd /out
 ls -las
 for i; do
   echo "apply patch $i"
