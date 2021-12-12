@@ -11,8 +11,7 @@ checksum = "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
 [[package]]
 name = "base64"
 version = "0.13.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "904dfeac50f3cdaba28fc6f57fdcddb75f49ed61346676a78c4ffe55877802fd"
+source = "git+https://github.com/marshallpierce/rust-base64.git?branch=master#d76e6092157ca1827f948a6bab27e6f9cc57c6c6"
 
 [[package]]
 name = "bitflags"
@@ -180,15 +179,21 @@ checksum = "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
 
 [[package]]
 name = "libc"
-version = "0.2.109"
+version = "0.2.111"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
+checksum = "8e167738f1866a7ec625567bae89ca0d44477232a4f7c52b1c7f2adc2c98804f"
 
 [[package]]
 name = "matches"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f"
+
+[[package]]
+name = "once_cell"
+version = "1.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56"
 
 [[package]]
 name = "opaque-debug"
@@ -410,7 +415,7 @@ dependencies = [
 [[package]]
 name = "yzix-core"
 version = "0.1.0"
-source = "git+https://github.com/YZITE/yzix.git?branch=main#e33fe9e6d1d2f8a2e23e7d988bf5985d4ed9244e"
+source = "git+https://github.com/YZITE/yzix.git?branch=main#7097e0aa7e76f8142b3ed8dd8e4041d2c9c8a613"
 dependencies = [
  "camino",
  "ciborium",
@@ -424,13 +429,14 @@ dependencies = [
 [[package]]
 name = "yzix-store"
 version = "0.1.0"
-source = "git+https://github.com/YZITE/yzix.git?branch=main#e33fe9e6d1d2f8a2e23e7d988bf5985d4ed9244e"
+source = "git+https://github.com/YZITE/yzix.git?branch=main#7097e0aa7e76f8142b3ed8dd8e4041d2c9c8a613"
 dependencies = [
  "base64",
  "blake2",
  "camino",
  "ciborium",
  "filetime",
+ "once_cell",
  "serde",
  "thiserror",
  "xattr",

@@ -58,7 +58,7 @@ fn main() {
     node_!(
         alpine_root_pre,
         NodeKind::Require {
-            hash: "m84OFxOfkVnnF7om15va9o1mgFcWD1TGH26ZhTLPuyg"
+            hash: "JzuKGzdi6Nliq4xWr0fX6CT+DPG5pX65c91PdhR8GAU"
                 .parse()
                 .unwrap(),
         },
