@@ -20,6 +20,6 @@ else
   cat config.log
   exit $ret
 fi
-make -j2
+make -j4
 make install -j1 DESTDIR=/out
 date
