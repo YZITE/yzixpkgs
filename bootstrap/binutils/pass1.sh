@@ -13,7 +13,12 @@ cd /build
 
 date
 set +e
-if "$1/configure" --prefix=/lfs/tools --with-sysroot=/lfs/tools --target=x86_64-lfs-linux-gnu --disable-nls --disable-werror; then
+if "$1/configure" --prefix=/lfs/tools --with-sysroot=/lfs/tools \
+        --target=x86_64-lfs-linux-gnu \
+        --enable-deterministic-archives \
+        --disable-nls \
+        --disable-werror
+then
   set -e
 else
   ret=$!
